@@ -11,7 +11,7 @@ export class AddressComponent implements OnInit {
     wallets = [];
 
     loading;
-
+    addingAddress = false;
     loadingRowsCount = 11;
 
     constructor(private walletsService: WalletsService,
@@ -34,7 +34,12 @@ export class AddressComponent implements OnInit {
     }
 
     addAddress(): void {
+        if (this.addingAddress) {
+            return;
+        }
+        this.addingAddress = true;
         this.walletsService.addWallet().subscribe((response) => {
+            this.addingAddress = false;
             this.wallets.push(response.result);
             let walletsCount = 10;
             const walletsCountStr = this.storage.getItem('walletsCount');
@@ -44,6 +49,8 @@ export class AddressComponent implements OnInit {
 
             ++walletsCount;
             this.storage.setItem('walletsCount', `${walletsCount}`);
+        }, (err) => {
+            this.addingAddress = false;
         });
     }
 

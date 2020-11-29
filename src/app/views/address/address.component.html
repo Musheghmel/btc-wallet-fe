@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col add-address w-100" (click)="addAddress()">
+                    <div class="col add-address w-100" [ngClass]="{'loading': addingAddress}" (click)="addAddress()">
                         <span class="material-icons">
                             add_circle
                         </span>

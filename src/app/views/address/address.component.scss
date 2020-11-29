@@ -4,6 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &.loading {
+        opacity: 0.2;
+    }
     .material-icons {
         font-size: 18px;
         margin-right: 10px;
