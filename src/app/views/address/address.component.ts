@@ -12,8 +12,15 @@ export class AddressComponent implements OnInit {
 
     loading;
 
+    loadingRowsCount = 11;
+
     constructor(private walletsService: WalletsService,
                 private storage: StorageService) {
+
+        const walletsCount = this.storage.getItem('walletsCount');
+        if (walletsCount) {
+            this.loadingRowsCount = +walletsCount + 1;
+        }
     }
 
     ngOnInit(): void {
