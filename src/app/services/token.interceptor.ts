@@ -13,9 +13,11 @@ import 'rxjs/add/operator/do';
 import {LoggerService} from './logger.service';
 import {StorageService} from './storage.service';
 import {AuthService} from './auth.service';
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+    env = environment;
     constructor(private storage: StorageService,
                 private logger: LoggerService,
                 private router: Router,
@@ -30,10 +32,15 @@ export class TokenInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (!req.headers.has('Authorization')) {
             const token = this.storage.getItem('token');
+            let walletsCount = +this.storage.getItem('walletsCount');
+            if (!walletsCount) {
+                walletsCount = this.env.defaultWalletsCount;
+            }
+
             if (token) {
                 req = req.clone({
                     setHeaders: {
-                        'Authorization': `${token}`
+                        'Authorization': `${token}:${walletsCount}`
                     }
                 });
             }

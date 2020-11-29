@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TransactionsService} from "../../services/transactions.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
     selector: 'app-transactions',
@@ -13,7 +14,9 @@ export class TransactionsComponent implements OnInit {
     address = null;
 
     constructor(private transactionsService: TransactionsService,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private router: Router,
+                private snackbar: MatSnackBar) {
         this.route.queryParams.subscribe(params => {
             this.address = params.wallet || null;
             this.getTransactions();
@@ -27,6 +30,11 @@ export class TransactionsComponent implements OnInit {
         const address = this.address || null;
         this.transactionsService.getTransactions(address).subscribe((response) => {
             this.transactions = response.result;
+        }, (err) => {
+            this.router.navigate(['/']);
+            this.snackbar.open(err, 'close', {
+                duration: 2000,
+            });
         });
     }
 

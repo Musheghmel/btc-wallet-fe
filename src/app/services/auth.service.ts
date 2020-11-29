@@ -34,7 +34,7 @@ export class AuthService implements CanActivate {
     }
 
     login(login: string): Observable<any> {
-        return this.networkHelper.post(`${this.hostUrl}/auth`, {login: login});
+        return this.networkHelper.post(`${this.hostUrl}/auth`, { login });
     }
 
     loggedIn(seed): void {
@@ -47,6 +47,7 @@ export class AuthService implements CanActivate {
     logout(): void {
         this.isAuthenticated = false;
         this.storage.setItem('isAuth', 'false');
+        this.storage.setItem('walletsCount', '');
         this.storage.setItem('token', '');
         this.authChange.next(this.isAuthenticated);
     }

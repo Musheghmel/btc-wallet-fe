@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {WalletsService} from "../../services/wallet.service";
+import {WalletsService} from '../../services/wallet.service';
+import {StorageService} from '../../services/storage.service';
 
 @Component({
     selector: 'app-address',
@@ -9,7 +10,8 @@ import {WalletsService} from "../../services/wallet.service";
 export class AddressComponent implements OnInit {
     wallets = [];
 
-    constructor(private walletsService: WalletsService) {
+    constructor(private walletsService: WalletsService,
+                private storage: StorageService) {
     }
 
     ngOnInit(): void {
@@ -21,6 +23,14 @@ export class AddressComponent implements OnInit {
     addAddress(): void {
         this.walletsService.addWallet().subscribe((response) => {
             this.wallets.push(response.result);
+            let walletsCount = 10;
+            const walletsCountStr = this.storage.getItem('walletsCount');
+            if (walletsCountStr) {
+                walletsCount = +walletsCountStr;
+            }
+
+            ++walletsCount;
+            this.storage.setItem('walletsCount', `${walletsCount}`);
         });
     }
 
