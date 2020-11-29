@@ -10,13 +10,19 @@ import {StorageService} from '../../services/storage.service';
 export class AddressComponent implements OnInit {
     wallets = [];
 
+    loading;
+
     constructor(private walletsService: WalletsService,
                 private storage: StorageService) {
     }
 
     ngOnInit(): void {
+        this.loading = true;
         this.walletsService.getWallets().subscribe((response) => {
             this.wallets = response.result;
+            this.loading = false;
+        }, (err) => {
+            this.loading = false;
         });
     }
 

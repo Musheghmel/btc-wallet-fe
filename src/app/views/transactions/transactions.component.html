@@ -10,7 +10,9 @@
                 <div class="col last-col" style="width: 15%">Fee</div>
             </div>
 
-            <div class="table-body">
+            <app-loading [rows]="20" *ngIf="loading"></app-loading>
+
+            <div class="table-body" *ngIf="!loading">
                 <div class="row" *ngFor="let transaction of transactions">
 
                     <div class="col" style="width: 12%">

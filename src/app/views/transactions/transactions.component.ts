@@ -12,6 +12,7 @@ export class TransactionsComponent implements OnInit {
     transactions = [];
 
     address = null;
+    loading = false;
 
     constructor(private transactionsService: TransactionsService,
                 private route: ActivatedRoute,
@@ -27,14 +28,18 @@ export class TransactionsComponent implements OnInit {
     }
 
     getTransactions(): void {
+        this.loading = true;
         const address = this.address || null;
         this.transactionsService.getTransactions(address).subscribe((response) => {
             this.transactions = response.result;
+            this.loading = false;
         }, (err) => {
             this.router.navigate(['/']);
             this.snackbar.open(err, 'close', {
                 duration: 2000,
             });
+
+            this.loading = false;
         });
     }
 

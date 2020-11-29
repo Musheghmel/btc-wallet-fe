@@ -18,6 +18,7 @@ import {CardComponent} from './card/card.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         FooterComponent,
         AuthPanelComponent,
         UserPanelComponent,
-        CardComponent
+        CardComponent,
+        LoadingComponent
     ],
     providers: [
         CommonPipesModule
@@ -60,6 +62,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
         HeaderComponent,
         FooterComponent,
         CardComponent,
+        LoadingComponent,
         MatSnackBarModule
     ]
 })

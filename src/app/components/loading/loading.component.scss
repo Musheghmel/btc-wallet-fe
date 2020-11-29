@@ -1,0 +1,28 @@
+.loading {
+    color: transparent;
+}
+
+.row {
+    position: relative;
+    overflow: hidden;
+}
+
+.row:before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
+    opacity: 0.2;
+    top: 0;
+    height: 100%;
+    animation-name: moving-gradient;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moving-gradient {
+    0% { left: -50%; }
+    100% { left: 100% }
+}
