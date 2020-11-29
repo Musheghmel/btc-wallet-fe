@@ -1,0 +1,48 @@
+<div class="container signup-card-container">
+
+    <app-card class="signup-card">
+        <div slot="title">Generate wallet</div>
+        <div slot="body" *ngIf="!account">
+            <div class="generate-text">
+                If you dont have account, click generate wallet button, else you can log in to your existing account,
+                using Mnemonic key or Seed hash
+            </div>
+
+            <div class="generate-wallet">
+                <button (click)="generate()"
+                        mat-raised-button
+                        color="primary"
+                        class="w-100">
+                    Generate wallet
+                </button>
+            </div>
+        </div>
+
+        <div slot="body" *ngIf="account">
+            <div class="generate-text">
+                Save mnemonic key and seed to be able to use wallet after
+            </div>
+
+            <mat-form-field class="w-100">
+                <mat-label>Mnemonic key</mat-label>
+                <textarea matInput>{{account.mnemonic}}</textarea>
+            </mat-form-field>
+
+            <mat-form-field class="w-100">
+                <mat-label>Seed HEX</mat-label>
+                <textarea matInput>{{account.seed}}</textarea>
+            </mat-form-field>
+
+            <div class="generate-wallet">
+                <button [routerLink]="['/']"
+                        mat-raised-button
+                        color="primary"
+                        class="w-100">
+                    To wallets page
+                </button>
+            </div>
+        </div>
+
+    </app-card>
+
+</div>

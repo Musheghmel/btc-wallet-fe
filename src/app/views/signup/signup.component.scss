@@ -1,0 +1,29 @@
+@import "src/scss/variables";
+
+:host {
+    flex: 1;
+    color: $main-text-color;
+}
+
+.signup-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-card {
+    margin: 40px 15px;
+    width: 500px;
+}
+
+.generate-text {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid $primary;
+    border-radius: 3px;
+}
+
+.generate-wallet {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

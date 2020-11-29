@@ -1,0 +1,35 @@
+@import "src/scss/variables";
+
+.add-address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .material-icons {
+        font-size: 18px;
+        margin-right: 10px;
+        color: $primary;
+    }
+}
+
+.wallet-address-line {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 90%;
+    text-overflow: ellipsis;
+}
+
+.address-col {
+    display: flex;
+    //align-items: center;
+    .material-icons {
+        font-size: 16px;
+        margin-right: 10px;
+    }
+}
+
+.col {
+    font-size: 12px;
+}
+

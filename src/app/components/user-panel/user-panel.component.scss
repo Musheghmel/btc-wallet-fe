@@ -1,0 +1,10 @@
+.menu {
+    display: flex;
+    align-items: center;
+    &_item {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}

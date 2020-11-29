@@ -1,0 +1,35 @@
+<app-card>
+    <div slot="title">Addresses</div>
+    <div slot="body">
+        <div class="table">
+            <div class="table-header">
+                <div class="col" style="width: 60%">Address</div>
+                <div class="col last-col" style="width: 40%">Balance</div>
+            </div>
+
+            <div class="table-body">
+                <div class="row" *ngFor="let wallet of wallets" [routerLink]="['/transactions']" [queryParams]="{ wallet: wallet.address }">
+                    <div class="col address-col" style="width: 60%">
+                        <span class="material-icons"
+                              matTooltip="Copy address"
+                              [clipboard]="wallet.address"
+                              (click)="$event.stopPropagation()">content_copy</span>
+                        <div class="wallet-address-line">{{ wallet.address }}</div>
+                    </div>
+                    <div class="col last-col" style="width: 40%">{{ wallet.balance | toFixed: 6}} BTC</div>
+                </div>
+
+                <div class="row">
+                    <div class="col add-address w-100" (click)="addAddress()">
+                        <span class="material-icons">
+                            add_circle
+                        </span>
+                        Add new address
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</app-card>

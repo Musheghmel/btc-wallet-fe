@@ -1,0 +1,10 @@
+<div class="header container">
+    <div class="logo">
+        <b class="logo_prefix">BTC</b>Wallet
+    </div>
+
+    <div class="panel">
+        <app-auth-panel *ngIf="!isAuthenticated"></app-auth-panel>
+        <app-user-panel *ngIf="isAuthenticated"></app-user-panel>
+    </div>
+</div>

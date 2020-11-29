@@ -1,0 +1,30 @@
+@import "src/scss/variables";
+
+:host {
+    color: $header-text;
+    background-color: $header-bg;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    &_prefix {
+        margin-right: 3px;
+        color: $primary;
+    }
+}
+
+.panel {
+    display: flex;
+    align-items: center;
+}

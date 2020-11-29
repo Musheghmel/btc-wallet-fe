@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~normalize.css';
+@import 'scss/variables';
+
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: Roboto;
+    background-color: $background;
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: $container-padding;
+    @include media-lt-lg {
+        max-width: 960px;
+    }
+    @include media-lt-md {
+        max-width: 600px;
+    }
+}
+
+.table {
+    width: 100%;
+    .col {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+    .table-header {
+        display: flex;
+        border-bottom: 1px solid $primary;
+    }
+    .table-body {
+        display: flex;
+        flex-direction: column;
+        .row {
+            display: flex;
+            cursor: pointer;
+            .col {
+                padding: 10px 5px;
+            }
+            &:nth-child(even) {
+                background-color: $card-header-bg;
+            }
+            &:hover {
+                background-color: #27293566;
+            }
+        }
+    }
+    .last-col {
+        justify-content: flex-end;
+    }
+}
+
+
+
+.w-100 {
+    width: 100%;
+}
+
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-primary: (
+    50 : #fff0e2,
+    100 : #ffdab6,
+    200 : #ffc286,
+    300 : #ffaa56,
+    400 : #ff9731,
+    500 : #ff850d,
+    600 : #ff7d0b,
+    700 : #ff7209,
+    800 : #ff6807,
+    900 : #ff5503,
+    A100 : #ffffff,
+    A200 : #fff6f2,
+    A400 : #ffd1bf,
+    A700 : #ffbea6,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+.dark-theme {
+    color: $light-primary-text;
+    $dark-primary: mat-palette($md-primary);
+    $dark-accent: mat-palette($mat-amber, A400, A100, A700);
+    $dark-warn: mat-palette($mat-red);
+    $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+    @include angular-material-theme($dark-theme);
+}
+
+
+

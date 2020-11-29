@@ -1,0 +1,42 @@
+$background: #000;
+
+$header-bg: #272935;
+$header-text: #ffffff;
+
+$footer-bg: #272935;
+$footer-text: #ffffff;
+
+$main-text-color: #ffffff;
+
+$card-bg: #191c25;
+$card-header-bg: #272935;
+
+$primary: #ff850d;
+
+
+// padding
+$container-padding: 0 15px;
+
+
+
+// media sizes
+$screen-lt-sm:	'screen and (max-width: 599px)';
+$screen-lt-md:	'screen and (max-width: 959px)';
+$screen-lt-lg:	'screen and (max-width: 1279px)';
+
+@mixin media-lt-sm {
+    @media #{$screen-lt-sm} {
+        @content
+    }
+}
+@mixin media-lt-md {
+    @media #{$screen-lt-md} {
+        @content
+    }
+}
+
+@mixin media-lt-lg {
+    @media #{$screen-lt-lg} {
+        @content;
+    }
+}

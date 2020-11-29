@@ -1,0 +1,55 @@
+@import 'src/scss/variables';
+
+.in {
+    color: green;
+}
+
+.out {
+    color: red;
+}
+
+.col {
+    font-size: 12px;
+}
+
+.wallet-address-line {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 90%;
+    text-overflow: ellipsis;
+    @include media-lt-sm {
+        width: auto;
+        max-width: 65%;
+    }
+}
+
+
+.table-header {
+    @include media-lt-sm {
+        display: none;
+    }
+}
+
+.mobile-title {
+    display: none;
+    @include media-lt-sm {
+        display: block;
+    }
+}
+
+.table-body {
+    .row {
+        @include media-lt-sm {
+            flex-direction: column;
+        }
+    }
+    .col {
+        @include media-lt-sm {
+            display: flex;
+            justify-content: space-between;
+            width: 100% !important;
+        }
+    }
+}

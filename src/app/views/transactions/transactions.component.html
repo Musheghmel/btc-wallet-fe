@@ -1,0 +1,54 @@
+<app-card>
+    <div slot="title">Transactions</div>
+    <div slot="body">
+        <div class="table">
+            <div class="table-header">
+                <div class="col" style="width: 12%">Date</div>
+                <div class="col" style="width: 8%">Dir</div>
+                <div class="col" style="width: 50%">Address</div>
+                <div class="col" style="width: 15%">Amount</div>
+                <div class="col last-col" style="width: 15%">Fee</div>
+            </div>
+
+            <div class="table-body">
+                <div class="row" *ngFor="let transaction of transactions">
+
+                    <div class="col" style="width: 12%">
+                        <div class="mobile-title">Date</div>
+                        {{ transaction.created | date: 'dd/MM/yy HH:mm' }}
+                    </div>
+                    <div class="col" style="width: 8%" [ngClass]="{
+                        'in': transaction.direction === 'in',
+                        'out': transaction.direction === 'out'
+                    }">
+                        <div class="mobile-title">Direction</div>
+                        {{ transaction.direction }}
+                    </div>
+                    <div class="col" style="width: 50%">
+                        <div class="mobile-title">Address</div>
+                        <div class="wallet-address-line">
+                            {{ transaction.direction === 'out' ? transaction.toAddress : transaction.fromAddress }}
+                        </div>
+                    </div>
+                    <div class="col" style="width: 15%">
+                        <div class="mobile-title">Amount</div>
+                        {{ transaction.amount | toFixed: 6 }}
+                    </div>
+                    <div class="col last-col" style="width: 15%">
+                        <div class="mobile-title">Fee</div>
+                        {{ transaction.fee | toFixed: 6 }}
+                    </div>
+
+                </div>
+
+                <div class="row" *ngIf="transactions.length === 0">
+                    <div class="col add-address w-100">
+                        No transaction
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</app-card>

@@ -1,0 +1,24 @@
+<div class="wallet-page container">
+    <div class="left-menu">
+        <app-card>
+            <div slot="title">Menu</div>
+            <div slot="body">
+                <div class="menu">
+                    <div class="menu_item" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <span class="material-icons">account_balance_wallet</span>
+                        Addresses
+                    </div>
+
+
+                    <div class="menu_item" [routerLink]="['/transactions']" routerLinkActive="active">
+                        <span class="material-icons">account_balance_wallet</span>
+                        Transactions
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="right-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
